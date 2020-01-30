@@ -7,10 +7,8 @@
     margin-top: 30px;
 }
 
-.imgcard{
-    width: 100px;
-}
+
 
 .card:hover{
-    opacity: 0.9;
+    opacity: 0.8;
 }
