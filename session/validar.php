@@ -1,5 +1,5 @@
 <?php
-include("conex.inc");
+include("../scripts/conex.inc");
 session_start();
 $user = $_GET['user'];
 $pass = $_GET['pass'];
@@ -15,9 +15,9 @@ if(mysqli_num_rows($query)!=0){
             $_SESSION['id'] = $row[3];
         }
     }
-    echo '<img class="gif" width="20%" src="gif.gif"><META HTTP-EQUIV="REFRESH" CONTENT="3;URL=index.php">';
+    echo '<img class="gif" width="20%" src="img/gif.gif"><META HTTP-EQUIV="REFRESH" CONTENT="3;URL=index.php">';
 }else{
-    echo '<img class="gif" width="20%" src="gif.gif"><META HTTP-EQUIV="REFRESH" CONTENT="0;URL=index.php">';
+    echo '<img class="gif" width="20%" src="img/gif.gif"><META HTTP-EQUIV="REFRESH" CONTENT="0;URL=index.php">';
 }
 
 ?>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("conex.inc");
+include("scripts/conex.inc");
 if(!isset($_SESSION['nombre'])){
     header("location: login.php");
 }
@@ -43,7 +43,7 @@ if(!isset($_SESSION['nombre'])){
                     <a class="nav-link" href="#">Features</a>
                 </li>
                 <li class="nav-item" >
-                    <a class="nav-link" href="destroy.php">Salir</a>
+                    <a class="nav-link" href="session/destroy.php">Salir</a>
                 </li>
             </ul>
         </div>
