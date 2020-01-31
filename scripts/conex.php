@@ -28,7 +28,7 @@ function getProducts(){
     $db = session();
     $query = $db->prepare("SELECT * FROM productos");
     $query->execute();
-    $filas = $query->fetch();
+    $filas = $query->fetchAll();
     return $filas;
 }
 

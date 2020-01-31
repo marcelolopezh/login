@@ -19,14 +19,6 @@ if(!isset($_SESSION['nombre'])){
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="stylex.css">
     <title>Bienvenido!</title>
-    <script>
-    $(document).ready(function(){
-        $(".btn").click(function(){
-            $(this).empty();
-            $(this).html("<button class='btn btn-warning' id=''>Eliminar</button>");
-        });
-    })
-    </script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -50,11 +42,24 @@ if(!isset($_SESSION['nombre'])){
     </nav>
     <div class="container">
         <div class="row text-center">
+
         <?php
             $fila = getProducts();
             foreach($fila as $row){
-                "<br>";
-                print_r($fila);
+                ?>
+             
+                <div class="col-md-4" id="<?php echo $row[0]?>">
+                    <div class="card" style="width: 18rem;">
+                        <img src="img/<?php echo $row[0]; ?>.jpg" class="card-img-top imgcard" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $row[1]; ?></h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a id="<?php echo $row[0];?>" class="btn btn-primary"><?php echo "$ ". $row[2];?></a>
+                        </div>
+                    </div>
+                </div>
+                <?php
+                
             }
         ?>
          

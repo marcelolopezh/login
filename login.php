@@ -31,12 +31,12 @@ if(isset($_SESSION['nombre'])){
         <form class="form-group">
             <div class="card-body">
                 <h6>Usuario</h6>
-                <input type="text" name="user" id="user" >
+                <input type="text" name="user" id="user" required="">
                 <h6>Contraseña</h6>
-                <input type="password" name="passwd" id="pass">
+                <input type="password" name="passwd" id="pass" required="">
             </div>
             <div class="card-footer text-muted" id="respuesta">
-                <input type="button" class="btn btn-success send" id="enviar" value="Ingresar">
+                <input type="submit" class="btn btn-success send" id="enviar" value="Ingresar">
             </div>
         </form>
     </div>
@@ -50,17 +50,18 @@ if(isset($_SESSION['nombre'])){
 <script>
 
 $(document).ready(function(){
-
     $(".send").click(function(){
-         $.ajax({
-            type:"GET",
-            cache:false,
-            url:"session/validar.php",
-            data:{user : $("#user").val(), pass : $("#pass").val()},
-            success: function(html){
-                $('#respuesta').html(html);
-            }
-        });
+        if($("#user").val()!=null && $("#pass").val()!=null){
+            $.ajax({
+                type:"GET",
+                cache:false,
+                url:"session/validar.php",
+                data:{user : $("#user").val(), pass : $("#pass").val()},
+                success: function(html){
+                    $('#respuesta').html(html);
+                }
+            });
+        }
     });
 });
 </script>
