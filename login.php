@@ -1,13 +1,11 @@
 <?php
 session_start();
-//include("conex.inc");
+include("scripts/conex.php");
 if(isset($_SESSION['nombre'])){
     header("location: index.php");
 }
 
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,22 +24,22 @@ if(isset($_SESSION['nombre'])){
 
 <body>
 
-        <div class="card text-center" id="formP">
-            <div class="card-header">
-                <h5>Login</h5>
-            </div>
+    <div class="card text-center" id="formP">
+        <div class="card-header">
+            <h5>Login</h5>
+        </div>
+        <form class="form-group">
             <div class="card-body">
-                <form class="form-group">
-                    <h6>Usuario</h6>
-                    <input type="text" name="user" id="user" >
-                    <h6>Contraseña</h6>
-                    <input type="password" name="passwd" id="pass">
-                </form>
+                <h6>Usuario</h6>
+                <input type="text" name="user" id="user" >
+                <h6>Contraseña</h6>
+                <input type="password" name="passwd" id="pass">
             </div>
             <div class="card-footer text-muted" id="respuesta">
-                <button class="btn btn-success send" >Ingresar</button>
+                <input type="button" class="btn btn-success send" id="enviar" value="Ingresar">
             </div>
-        </div>
+        </form>
+    </div>
 
 </body>
 </html>
@@ -52,6 +50,7 @@ if(isset($_SESSION['nombre'])){
 <script>
 
 $(document).ready(function(){
+
     $(".send").click(function(){
          $.ajax({
             type:"GET",

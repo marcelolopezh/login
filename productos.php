@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("scripts/conex.inc");
+include("scripts/conex.php");
 if(!isset($_SESSION['nombre'])){
     header("location: login.php");
 }
@@ -51,22 +51,12 @@ if(!isset($_SESSION['nombre'])){
     <div class="container">
         <div class="row text-center">
         <?php
-            $query = mysqli_query($con,"SELECT * FROM productos");
-            while($row = mysqli_fetch_array($query)){
-            ?>
-            <div class="col-md-4" id="<?php echo $row[0]?>">
-                <div class="card" style="width: 18rem;">
-                    <img src="img/<?php echo $row[0]; ?>.jpg" class="card-img-top imgcard" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title"><?php echo $row[1]; ?></h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a id="<?php echo $row[0];?>" class="btn btn-primary"><?php echo "$ ". $row[2];?></a>
-                    </div>
-                </div>
-            </div>
-            <?php
-                }
-            ?>
+            $fila = getProducts();
+            foreach($fila as $row){
+                "<br>";
+                print_r($fila);
+            }
+        ?>
          
         </div>
     </div>
