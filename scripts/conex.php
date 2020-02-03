@@ -16,7 +16,10 @@ function session(){
 
 function validateLogin($usuario,$password){
     $db = session();
-    $query = $db->prepare("SELECT * FROM usuarios WHERE usuario = :usuario and password = :password");
+    $cons = "SELECT a.usuario, b.telefono, c.correo FROM usuarios a INNER JOIN
+    telefono b ON(a.id=b.id) INNER JOIN correo c ON (a.id = c.id) WHERE 
+    a.usuario = :usuario and a.password = :password";
+    $query = $db->prepare($cons);
     $query->bindParam(':usuario', $usuario);
     $query->bindParam(':password', $password);
     $query->execute();
